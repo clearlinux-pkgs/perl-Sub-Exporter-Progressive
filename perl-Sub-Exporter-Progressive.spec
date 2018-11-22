@@ -4,7 +4,7 @@
 #
 Name     : perl-Sub-Exporter-Progressive
 Version  : 0.001013
-Release  : 8
+Release  : 9
 URL      : http://search.cpan.org/CPAN/authors/id/F/FR/FREW/Sub-Exporter-Progressive-0.001013.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/F/FR/FREW/Sub-Exporter-Progressive-0.001013.tar.gz
 Summary  : 'Only use Sub::Exporter if you need it'
@@ -90,7 +90,7 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.26.1/Sub/Exporter/Progressive.pm
+/usr/lib/perl5/vendor_perl/5.28.0/Sub/Exporter/Progressive.pm
 
 %files dev
 %defattr(-,root,root,-)
