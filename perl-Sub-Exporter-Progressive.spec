@@ -4,10 +4,10 @@
 #
 Name     : perl-Sub-Exporter-Progressive
 Version  : 0.001013
-Release  : 14
+Release  : 15
 URL      : http://search.cpan.org/CPAN/authors/id/F/FR/FREW/Sub-Exporter-Progressive-0.001013.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/F/FR/FREW/Sub-Exporter-Progressive-0.001013.tar.gz
-Summary  : 'Only use Sub::Exporter if you need it'
+Summary  : Only use Sub::Exporter if you need it
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Sub-Exporter-Progressive-license = %{version}-%{release}
@@ -38,6 +38,7 @@ use Syntax::Keyword::Gather 'gather', take => { -as => 'grab' };
 Summary: dev components for the perl-Sub-Exporter-Progressive package.
 Group: Development
 Provides: perl-Sub-Exporter-Progressive-devel = %{version}-%{release}
+Requires: perl-Sub-Exporter-Progressive = %{version}-%{release}
 
 %description dev
 dev components for the perl-Sub-Exporter-Progressive package.
