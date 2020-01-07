@@ -4,13 +4,14 @@
 #
 Name     : perl-Sub-Exporter-Progressive
 Version  : 0.001013
-Release  : 15
+Release  : 16
 URL      : http://search.cpan.org/CPAN/authors/id/F/FR/FREW/Sub-Exporter-Progressive-0.001013.tar.gz
 Source0  : http://search.cpan.org/CPAN/authors/id/F/FR/FREW/Sub-Exporter-Progressive-0.001013.tar.gz
-Summary  : Only use Sub::Exporter if you need it
+Summary  : 'Only use Sub::Exporter if you need it'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Sub-Exporter-Progressive-license = %{version}-%{release}
+Requires: perl-Sub-Exporter-Progressive-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -52,14 +53,24 @@ Group: Default
 license components for the perl-Sub-Exporter-Progressive package.
 
 
+%package perl
+Summary: perl components for the perl-Sub-Exporter-Progressive package.
+Group: Default
+Requires: perl-Sub-Exporter-Progressive = %{version}-%{release}
+
+%description perl
+perl components for the perl-Sub-Exporter-Progressive package.
+
+
 %prep
 %setup -q -n Sub-Exporter-Progressive-0.001013
+cd %{_builddir}/Sub-Exporter-Progressive-0.001013
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -69,7 +80,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -78,7 +89,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Sub-Exporter-Progressive
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Sub-Exporter-Progressive/LICENSE
+cp %{_builddir}/Sub-Exporter-Progressive-0.001013/LICENSE %{buildroot}/usr/share/package-licenses/perl-Sub-Exporter-Progressive/e9789d579cadf405b8268d1040af8442ef6d0f1a
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -91,7 +102,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Sub/Exporter/Progressive.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -99,4 +109,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Sub-Exporter-Progressive/LICENSE
+/usr/share/package-licenses/perl-Sub-Exporter-Progressive/e9789d579cadf405b8268d1040af8442ef6d0f1a
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Sub/Exporter/Progressive.pm
